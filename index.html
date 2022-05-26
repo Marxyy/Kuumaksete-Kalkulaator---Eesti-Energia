@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Kuumaksete kalkulaator - Eesti Energia</title>
+		<link rel="stylesheet" href="/styles.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="title">Kuumaksete kalkulaator</h1>
+			<div class="service">
+				<p class="sub-title">Teenus:</p>
+				<div class="solution pv">
+					<input class="check" type="checkbox" name="pv" id="pv" />
+					<p class="service-text">Päikesepaneelid</p>
+				</div>
+				<div class="solution heatpump">
+					<input class="check" type="checkbox" name="heatpump" id="heatpump" />
+					<p class="service-text">Soojuspump</p>
+				</div>
+				<div class="solution electric-work">
+					<input
+						class="check"
+						type="checkbox"
+						name="electric-work"
+						id="electric-work"
+					/>
+					<p class="service-text">Elektritööd</p>
+				</div>
+				<div class="solution off-grid">
+					<input class="check" type="checkbox" name="off-grid" id="off-grid" />
+					<p class="service-text">Off-Grid võrguvaba elekter</p>
+				</div>
+				<div class="solution ev-charging">
+					<input
+						class="check"
+						type="checkbox"
+						name="ev-charging"
+						id="ev-charging"
+					/>
+					<p class="service-text">Elektriautode laadimislahendused</p>
+				</div>
+			</div>
+			<div class="calculator">
+				<div class="calculator-input">
+					<p class="sub-title">Summa:</p>
+					<div class="price-slider"></div>
+					<div class="user-input">
+						<p class="sub-title">Periood:</p>
+						<select name="period" id="period">
+							<option value="months_12">12 kuud</option>
+							<option value="months_24">24 kuud</option>
+							<option value="months_36">36 kuud</option>
+							<option value="months_48">48 kuud</option>
+							<option value="months_60" selected>60 kuud</option>
+						</select>
+						<p class="sub-title">Sissemakse (eur):</p>
+						<input type="text" name="deposit" id="deposit" placeholder="-" />
+					</div>
+					<div class="input-results">
+						<div class="input interest">
+							<p class="sub-title">Intress</p>
+							<div class="interest-sum">7.90 %</div>
+						</div>
+						<div class="input contract">
+							<p class="sub-title">Lepingutasu</p>
+							<div class="contract-sum">0 €</div>
+						</div>
+						<div class="input management-fee">
+							<p class="sub-title">Igakuine haldustasu</p>
+							<div class="management-fee-sum">0 €</div>
+						</div>
+						<div class="input period-result">
+							<p class="sub-title">Periood</p>
+							<div class="period-sum">60 kuud</div>
+						</div>
+						<div class="input project-cost">
+							<p class="sub-title">Projekti maksumus</p>
+							<div class="project-cost-sum">20 184 €</div>
+						</div>
+						<div class="per-month">
+							<p class="price-title">Kuumakse</p>
+							<div class="price-per-month">80.00€</div>
+						</div>
+					</div>
+				</div>
+				<div class="btn submit">
+					<a href="#" class="submit-btn">Esitlan taotluse</a>
+				</div>
+			</div>
+		</div>
+		<script src="/script.js"></script>
+	</body>
+</html>
