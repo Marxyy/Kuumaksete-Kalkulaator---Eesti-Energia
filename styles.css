@@ -1,3 +1,5 @@
+/* General Reset  */
+
 /* Box sizing rules */
 *,
 *::before,
@@ -35,6 +37,9 @@ body {
 	min-height: 100vh;
 	text-rendering: optimizeSpeed;
 	line-height: 1.5;
+	font-family: sans-serif;
+	color: hsl(0, 0%, 15%);
+	background-color: var(--light-blue);
 }
 
 /* A elements that don't have a class get default styles */
@@ -57,6 +62,42 @@ select {
 	font: inherit;
 }
 
+input[type="checkbox"] {
+	height: 25px;
+	width: 25px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	border: 1px solid rgb(196, 196, 196);
+	border-radius: 5px;
+	outline: none;
+	transition-duration: 0.3s;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+input[type="checkbox"]:checked {
+	border: none;
+	background-color: var(--main-green);
+}
+
+input[type="checkbox"]::after {
+	font-family: "Font Awesome 6 Free";
+	font-weight: 900;
+	content: "\f00c";
+	color: #fff;
+	font-size: 20px;
+}
+
+a,
+a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
 	html:focus-within {
@@ -71,4 +112,62 @@ select {
 		transition-duration: 0.01ms !important;
 		scroll-behavior: auto !important;
 	}
+}
+
+/* Custom properties */
+
+:root {
+	--main-green: hsl(114, 55%, 45%);
+	--light-blue: hsl(200, 65%, 95%);
+	--light-grey: hsl(180, 23%, 97%);
+}
+
+.flex {
+	display: flex;
+	gap: var(--gap, 1rem);
+}
+
+.grid {
+	display: grid;
+	gap: var(--gap, 1rem);
+}
+
+.container {
+	padding-inline: 4em;
+	margin-inline: auto;
+	max-width: 80rem;
+	background-color: #fff;
+}
+
+.title {
+	text-align: center;
+	padding: 1rem;
+}
+
+.sub-title {
+	margin: 1rem 0;
+	font-size: 1.25rem;
+}
+
+.service-text {
+	margin-top: 0.75rem;
+}
+
+.solution {
+	padding: 1.5rem 0.5rem;
+	border-radius: 10px;
+	text-align: center;
+	box-shadow: 1px 2px 5px 4px rgba(12, 12, 12, 0.1);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.selected {
+	background-color: var(--light-grey);
+}
+
+.services {
+	grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 }
