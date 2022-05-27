@@ -52,16 +52,22 @@
 					<p class="sub-title">Summa:</p>
 					<div class="price-slider"></div>
 					<div class="user-input">
-						<p class="sub-title">Periood:</p>
-						<select name="period" id="period">
+						<p class="sub-title required">Periood:</p>
+						<select class="input-box" name="period" id="period">
 							<option value="months_12">12 kuud</option>
 							<option value="months_24">24 kuud</option>
 							<option value="months_36">36 kuud</option>
 							<option value="months_48">48 kuud</option>
 							<option value="months_60" selected>60 kuud</option>
 						</select>
-						<p class="sub-title">Sissemakse (eur):</p>
-						<input type="text" name="deposit" id="deposit" placeholder="-" />
+						<p class="sub-title required">Sissemakse (eur):</p>
+						<input
+							class="input-box"
+							type="text"
+							name="deposit"
+							id="deposit"
+							placeholder="-"
+						/>
 					</div>
 					<div class="input-results">
 						<div class="input interest">

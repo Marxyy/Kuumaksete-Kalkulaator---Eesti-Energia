@@ -57,8 +57,7 @@ picture {
 /* Inherit fonts for inputs and buttons */
 input,
 button,
-textarea,
-select {
+textarea {
 	font: inherit;
 }
 
@@ -170,4 +169,39 @@ a:visited {
 
 .services {
 	grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+}
+
+.calculator::before {
+	content: "";
+	width: 100%;
+	height: 3px;
+	border-radius: 5px;
+	margin: 2rem 0 0;
+	background-color: var(--light-grey);
+	display: inline-block;
+}
+
+.required::after {
+	content: " *";
+	color: red;
+}
+
+.input-box {
+	padding: 1rem 2.5rem 1rem 0.5rem;
+	background-color: var(--light-grey);
+	width: 200px;
+	height: 50px;
+	border-radius: 5px;
+	border: 1px solid rgb(196, 196, 196);
+	box-shadow: 1px 2px 3px 2px rgba(12, 12, 12, 0.1);
+}
+
+.price-slider::after {
+	content: "";
+	width: 100%;
+	height: 3px;
+	border-radius: 5px;
+	margin: 2rem 0 0;
+	background-color: var(--light-grey);
+	display: inline-block;
 }
