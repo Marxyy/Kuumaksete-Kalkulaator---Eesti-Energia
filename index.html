@@ -50,23 +50,43 @@
 			<div class="calculator">
 				<div class="calculator-input">
 					<p class="sub-title">Summa:</p>
-					<div class="price-slider"></div>
+					<div class="price-slider">
+						<div class="slider-value">
+							<span class="current-price">8000 €</span>
+						</div>
+						<div class="prices">
+							<input
+								type="range"
+								min="300"
+								max="25000"
+								value="8000"
+								steps="1"
+								class="price-range"
+							/>
+						</div>
+						<div class="values-min-max">
+							<div class="value min-value">300 €</div>
+							<div class="value max-value">25 000 €</div>
+						</div>
+					</div>
 					<div class="user-input">
 						<p class="sub-title required">Periood:</p>
-						<select class="input-box" name="period" id="period">
-							<option value="months_12">12 kuud</option>
-							<option value="months_24">24 kuud</option>
-							<option value="months_36">36 kuud</option>
-							<option value="months_48">48 kuud</option>
-							<option value="months_60" selected>60 kuud</option>
-						</select>
+						<div class="custom-select">
+							<select class="input-box" name="period" id="period">
+								<option value="months_12">12 kuud</option>
+								<option value="months_24">24 kuud</option>
+								<option value="months_36">36 kuud</option>
+								<option value="months_48">48 kuud</option>
+								<option value="months_60" selected>60 kuud</option>
+							</select>
+						</div>
 						<p class="sub-title required">Sissemakse (eur):</p>
 						<input
-							class="input-box"
+							class="input-box input-text"
 							type="text"
 							name="deposit"
 							id="deposit"
-							placeholder="-"
+							placeholder="€"
 						/>
 					</div>
 					<div class="input-results">
