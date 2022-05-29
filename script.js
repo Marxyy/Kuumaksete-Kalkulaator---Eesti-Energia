@@ -1,7 +1,8 @@
-const sliderValue = document.querySelector(".current-price");
 const inputSlider = document.querySelector(".price-range");
+const slideValue = document.querySelector(".current-price");
 
 inputSlider.oninput = () => {
 	let value = inputSlider.value;
-	sliderValue.textContent = value;
+	slideValue.textContent = value + " €";
+	slideValue.style.left = value / 273 + "%";
 };
