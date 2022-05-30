@@ -16,36 +16,60 @@
 			<h2 class="title">Kuumaksete kalkulaator</h2>
 			<p class="sub-title">Teenus:</p>
 			<div class="services grid">
-				<div class="solution pv">
-					<input class="check" type="checkbox" name="pv" id="pv" />
-					<p class="service-text">Päikesepaneelid</p>
-				</div>
-				<div class="solution heatpump">
-					<input class="check" type="checkbox" name="heatpump" id="heatpump" />
-					<p class="service-text">Soojuspump</p>
-				</div>
-				<div class="solution electric-work">
+				<label class="solution pv">
+					<input class="check" type="radio" name="radio" id="pv" value="pv" />
+					<div class="solution-content">
+						<p class="service-text">Päikesepaneelid</p>
+					</div>
+				</label>
+				<label class="solution heatpump">
 					<input
 						class="check"
-						type="checkbox"
-						name="electric-work"
+						type="radio"
+						name="radio"
+						id="heatpump"
+						value="heatpump"
+					/>
+					<div class="solution-content">
+						<p class="service-text">Soojuspump</p>
+					</div>
+				</label>
+				<label class="solution electric-work">
+					<input
+						class="check"
+						type="radio"
+						name="radio"
 						id="electric-work"
+						value="electric-work"
 					/>
-					<p class="service-text">Elektritööd</p>
-				</div>
-				<div class="solution off-grid">
-					<input class="check" type="checkbox" name="off-grid" id="off-grid" />
-					<p class="service-text">Off-Grid võrguvaba elekter</p>
-				</div>
-				<div class="solution ev-charging">
+					<div class="solution-content">
+						<p class="service-text">Elektritööd</p>
+					</div>
+				</label>
+				<label class="solution off-grid">
 					<input
 						class="check"
-						type="checkbox"
-						name="ev-charging"
-						id="ev-charging"
+						type="radio"
+						name="radio"
+						id="off-grid"
+						value="off-grid"
 					/>
-					<p class="service-text">Elektriautode laadimislahendused</p>
-				</div>
+					<div class="solution-content">
+						<p class="service-text">Off-Grid võrguvaba elekter</p>
+					</div>
+				</label>
+				<label class="solution ev-charging">
+					<input
+						class="check"
+						type="radio"
+						name="radio"
+						id="ev-charging"
+						value="ev-charging"
+					/>
+					<div class="solution-content">
+						<p class="service-text">Elektriautode laadimislahendused</p>
+					</div>
+				</label>
 			</div>
 			<div class="calculator">
 				<div class="calculator-input">

@@ -5,13 +5,8 @@ const container = document.querySelector(".container");
 const popup = document.querySelector(".popup");
 const btn = document.querySelector(".submit-btn");
 const closeBtn = document.querySelector(".popup-btn");
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-const solutionPv = document.querySelector(".pv");
-const solutionHp = document.querySelector(".heatpump");
-const solutionEw = document.querySelector(".electric-work");
-
-const solutionOg = document.querySelector(".off-grid");
-const solutionEv = document.querySelector(".ev-charging");
+const checkboxes = document.querySelectorAll('input[type="radio"]');
+const solutions = document.querySelectorAll(".solution");
 
 inputSlider.oninput = () => {
 	let value = inputSlider.value;
@@ -34,19 +29,3 @@ closeBtn.onclick = () => {
 	container.classList.remove("is-blurred");
 	popup.classList.remove("show-popup");
 };
-
-solutionPv.addEventListener("click", (e) => {
-	e.target.classList.toggle("selected");
-});
-solutionHp.addEventListener("click", (e) => {
-	e.target.classList.toggle("selected");
-});
-solutionEw.addEventListener("click", (e) => {
-	e.target.classList.toggle("selected");
-});
-solutionOg.addEventListener("click", (e) => {
-	e.target.classList.toggle("selected");
-});
-solutionEv.addEventListener("click", (e) => {
-	e.target.classList.toggle("selected");
-});
