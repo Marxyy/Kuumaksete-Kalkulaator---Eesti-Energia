@@ -204,6 +204,7 @@ input[type="radio"]:checked + .solution-content::before {
 	padding: 0 0.5rem;
 	background-color: var(--light-grey);
 	width: 100%;
+	max-width: 278px;
 	height: 50px;
 	border-radius: 5px;
 	border: 1px solid rgb(196, 196, 196);
@@ -217,43 +218,49 @@ input[type="radio"]:checked + .solution-content::before {
 
 .price-slider {
 	width: 100%;
-	margin-top: 3rem;
+	margin-top: 2rem;
 }
 
 .price-slider .slider-value {
-	position: relative;
-	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 580px;
+	margin: 2rem auto;
 }
 
 .current-price {
-	position: absolute;
-	height: 30px;
-	width: 90px;
+	/* position: absolute; */
+	height: 40px;
+	width: 125px;
 	background-color: var(--main-green);
 	color: #fff;
 	font-weight: 500;
-	top: -45px;
-	transform: translateX(-32.5%);
-	line-height: 32.5px;
+	font-size: 1.15rem;
+	/* top: -45px; */
+	margin: 0 auto;
+	/* transform: translateX(45%); */
+	line-height: 22.5px;
 	z-index: 1;
 	border-radius: 25px;
 	text-align: center;
+	padding: 10px 20px;
 }
 
-.current-price::after {
+/* .current-price::after {
 	position: absolute;
 	content: "";
 	height: 15px;
 	width: 15px;
 	background-color: var(--main-green);
 	top: 20px;
-	transform: translateX(-235%) rotate(-45deg);
+	transform: translateX(-215%) rotate(-45deg);
 	z-index: -1;
 	border-top-right-radius: 80%;
 	border-bottom-right-radius: 80%;
 	border-top-left-radius: 20%;
 	border-bottom-left-radius: 20%;
-}
+} */
 
 .prices {
 	position: relative;
@@ -267,7 +274,7 @@ input[type="radio"]:checked + .solution-content::before {
 .prices input {
 	-webkit-appearance: none;
 	height: 10px;
-	width: 100%;
+	width: 580px;
 	background-color: hsla(114, 55%, 45%, 0.3);
 	border-radius: 20px;
 	outline: none;
@@ -307,6 +314,8 @@ input[type="radio"]:checked + .solution-content::before {
 .values-min-max {
 	display: flex;
 	justify-content: space-between;
+	max-width: 580px;
+	margin: 0 auto;
 }
 
 .price-slider::after {

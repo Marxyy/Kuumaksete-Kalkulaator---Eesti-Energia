@@ -11,7 +11,7 @@ const solutions = document.querySelectorAll(".solution");
 inputSlider.oninput = () => {
 	let value = inputSlider.value;
 	slideValue.textContent = value + " €";
-	slideValue.style.left = value / 277 + "%";
+	slideValue.style.left = value / 260 + "%";
 	const min = range.min;
 	const max = range.max;
 	const rangeValue = range.value;
