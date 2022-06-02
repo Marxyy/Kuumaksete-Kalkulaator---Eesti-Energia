@@ -83,6 +83,10 @@ input[type="radio"]::after {
 	font-size: 20px;
 }
 
+option {
+	font-size: 1.15rem;
+}
+
 a,
 a:visited {
 	text-decoration: none;
@@ -270,7 +274,7 @@ input[type="radio"]:checked + .solution-content::before {
 	outline: none;
 	border: none;
 	background-image: linear-gradient(hsl(114, 55%, 45%), hsl(114, 55%, 45%));
-	background-size: 0% 100%;
+	background-size: 20% 100%;
 	background-repeat: no-repeat;
 }
 

@@ -5,6 +5,15 @@ const container = document.querySelector(".container");
 const popup = document.querySelector(".popup");
 const btn = document.querySelector(".submit-btn");
 const closeBtn = document.querySelector(".popup-btn");
+const pv = document.querySelector("#pv");
+const heatpump = document.querySelector("#heatpump");
+const electricWork = document.querySelector("#electric-work");
+const offGrid = document.querySelector("#off-grid");
+const evCharging = document.querySelector("#ev-charging");
+const userSum = document.querySelector(".current-price");
+const minValue = document.querySelector(".min-value");
+const maxValue = document.querySelector(".max-value");
+const defaultValue = inputSlider.value;
 
 inputSlider.oninput = () => {
 	let value = inputSlider.value;
