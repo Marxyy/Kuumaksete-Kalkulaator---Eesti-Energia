@@ -5,13 +5,11 @@ const container = document.querySelector(".container");
 const popup = document.querySelector(".popup");
 const btn = document.querySelector(".submit-btn");
 const closeBtn = document.querySelector(".popup-btn");
-const checkboxes = document.querySelectorAll('input[type="radio"]');
-const solutions = document.querySelectorAll(".solution");
 
 inputSlider.oninput = () => {
 	let value = inputSlider.value;
 	slideValue.textContent = value + " €";
-	slideValue.style.left = value / 260 + "%";
+	// slideValue.style.left = value / 260 + "%";
 	const min = range.min;
 	const max = range.max;
 	const rangeValue = range.value;

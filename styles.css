@@ -34,12 +34,12 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
-	min-height: 100vh;
 	text-rendering: optimizeSpeed;
 	line-height: 1.5;
-	font-family: sans-serif;
+	font-family: "Roboto", sans-serif;
 	color: hsl(0, 0%, 15%);
 	background-color: var(--light-blue);
+	height: 100%;
 }
 
 /* A elements that don't have a class get default styles */
@@ -59,6 +59,10 @@ input,
 button,
 textarea {
 	font: inherit;
+}
+
+input[type="text"] {
+	height: 40px;
 }
 
 input[type="radio"] {
@@ -82,7 +86,7 @@ input[type="radio"]::after {
 a,
 a:visited {
 	text-decoration: none;
-	color: inherit;
+	color: #fff;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
@@ -116,11 +120,12 @@ a:visited {
 
 .grid {
 	display: grid;
-	gap: var(--gap, 1rem);
+	gap: var(--gap, 1.5rem);
 }
 
 .container {
-	padding-inline: 4em;
+	padding: auto 0;
+	padding-inline: 3rem;
 	margin-inline: auto;
 	max-width: 80rem;
 	background-color: #fff;
@@ -132,14 +137,14 @@ a:visited {
 }
 
 .sub-title {
-	margin: 1rem 0;
-	font-size: 1.25rem;
+	margin: 0.75rem 0;
+	font-size: 1.1rem;
 }
 
 .service-text {
 	pointer-events: none;
 	font-size: 1rem;
-	max-width: 99%;
+	max-width: 80%;
 }
 
 input[type="radio"]:checked + .solution-content {
@@ -154,7 +159,8 @@ input[type="radio"]:checked + .solution-content {
 	font-size: 20px;
 	padding: 1px 8px;
 	border-radius: 5px;
-	margin-bottom: 2rem;
+
+	margin-bottom: 1rem;
 	border: 2px solid rgba(110, 110, 110, 0.5);
 	position: relative;
 }
@@ -168,7 +174,7 @@ input[type="radio"]:checked + .solution-content::before {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 150px;
+	height: 125px;
 	width: 100%;
 	cursor: pointer;
 	border-radius: 10px;
@@ -178,19 +184,15 @@ input[type="radio"]:checked + .solution-content::before {
 }
 
 .services {
-	grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(175px, 100%), 1fr));
 }
 
-.calculator {
-	padding-bottom: 2rem;
-}
-
-.calculator::before {
+.line {
 	content: "";
 	width: 100%;
 	height: 3px;
 	border-radius: 5px;
-	margin: 2rem 0 0;
+	margin: 2rem auto 0;
 	background-color: var(--light-grey);
 	display: inline-block;
 }
@@ -201,19 +203,22 @@ input[type="radio"]:checked + .solution-content::before {
 }
 
 .input-box {
-	padding: 0 0.5rem;
+	padding: 0.5rem;
+	width: 215px;
 	background-color: var(--light-grey);
-	width: 100%;
-	max-width: 278px;
-	height: 50px;
 	border-radius: 5px;
 	border: 1px solid rgb(196, 196, 196);
 	box-shadow: 1px 1px 1px 2px rgba(12, 12, 12, 0.1);
-	font-size: 1.25rem;
+	font-size: 1.1rem;
 }
 
 .input-text:active {
 	background-color: var(--light-grey);
+}
+
+.user-input {
+	flex-flow: row wrap;
+	justify-content: space-between;
 }
 
 .price-slider {
@@ -225,7 +230,7 @@ input[type="radio"]:checked + .solution-content::before {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	max-width: 580px;
+	max-width: 400px;
 	margin: 2rem auto;
 }
 
@@ -247,21 +252,6 @@ input[type="radio"]:checked + .solution-content::before {
 	padding: 10px 20px;
 }
 
-/* .current-price::after {
-	position: absolute;
-	content: "";
-	height: 15px;
-	width: 15px;
-	background-color: var(--main-green);
-	top: 20px;
-	transform: translateX(-215%) rotate(-45deg);
-	z-index: -1;
-	border-top-right-radius: 80%;
-	border-bottom-right-radius: 80%;
-	border-top-left-radius: 20%;
-	border-bottom-left-radius: 20%;
-} */
-
 .prices {
 	position: relative;
 	display: flex;
@@ -274,7 +264,7 @@ input[type="radio"]:checked + .solution-content::before {
 .prices input {
 	-webkit-appearance: none;
 	height: 10px;
-	width: 580px;
+	width: 400px;
 	background-color: hsla(114, 55%, 45%, 0.3);
 	border-radius: 20px;
 	outline: none;
@@ -314,32 +304,9 @@ input[type="radio"]:checked + .solution-content::before {
 .values-min-max {
 	display: flex;
 	justify-content: space-between;
-	max-width: 580px;
+	max-width: 400px;
 	margin: 0 auto;
-}
-
-.price-slider::after {
-	content: "";
-	width: 100%;
-	height: 3px;
-	border-radius: 5px;
-	margin: 2rem 0 0;
-	background-color: var(--light-grey);
-	display: inline-block;
-}
-
-.input-results::before {
-	content: "";
-	width: 100%;
-	height: 3px;
-	border-radius: 5px;
-	margin: 2rem 0 1rem;
-	background-color: var(--light-grey);
-	display: inline-block;
-}
-
-.input-results {
-	margin: 1rem 0;
+	font-weight: 300;
 }
 
 .input {
@@ -347,22 +314,22 @@ input[type="radio"]:checked + .solution-content::before {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0.75rem;
+	padding: 0.925rem 0.75rem;
 }
 
 .price-sub-title {
-	font-size: 1rem;
-	font-weight: 400;
+	font-size: 1.1rem;
+	font-weight: 300;
 }
 
 .price-title {
-	font-weight: 500;
-	font-size: 1.25rem;
+	font-weight: 400;
+	font-size: 1.2rem;
 }
 
 .price-per-month {
 	color: var(--main-green);
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	font-weight: 400;
 }
 
@@ -435,4 +402,58 @@ input[type="radio"]:checked + .solution-content::before {
 	-webkit-filter: blur(3px);
 	pointer-events: none;
 	user-select: none;
+}
+
+@media only screen and (min-width: 810px) {
+	.container {
+		border-radius: 15px;
+		padding-inline: 4rem;
+	}
+	.calculator {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+
+	.input-box {
+		width: 190px;
+	}
+
+	.horizontal-line {
+		display: none;
+	}
+
+	.calculator-input-results {
+		width: 100%;
+		margin: 0;
+	}
+
+	.price-sub-title {
+		font-size: 0.9rem;
+	}
+}
+
+@media only screen and (min-width: 1090px) {
+	.calculator {
+		gap: 3.5rem;
+	}
+
+	.price-sub-title {
+		font-size: 1rem;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.container {
+		margin-top: 4rem;
+		padding-inline: 5rem;
+	}
+
+	.calculator {
+		gap: 5rem;
+	}
+
+	.input-box {
+		width: 225px;
+	}
 }
