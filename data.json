@@ -3,55 +3,55 @@
 		"id": "pv",
 		"creditMin": 300,
 		"creditMax": 25000,
-		"interest": "7,90%",
+		"interest": 7.9,
 		"contractFee": 50,
 		"monthlyPayment": 1,
 		"periodMax": "120 kuud",
 		"defaultSum": 5000,
-		"defaultPeriod": "60"
+		"defaultPeriod": 60
 	},
 	{
 		"id": "heatpump",
 		"creditMin": 300,
 		"creditMax": 25000,
-		"interest": "7,90%",
+		"interest": 7.9,
 		"contractFee": 30,
 		"monthlyPayment": 1,
 		"periodMax": "120 kuud",
 		"defaultSum": 1000,
-		"defaultPeriod": "48"
+		"defaultPeriod": 60
 	},
 	{
 		"id": "electric-work",
 		"creditMin": 300,
 		"creditMax": 25000,
-		"interest": "8,90%",
+		"interest": 8.9,
 		"contractFee": 20,
 		"monthlyPayment": 1,
 		"periodMax": "120 kuud",
 		"defaultSum": 1000,
-		"defaultPeriod": "48"
+		"defaultPeriod": 48
 	},
 	{
 		"id": "off-grid",
 		"creditMin": 300,
 		"creditMax": 25000,
-		"interest": "6,50%",
+		"interest": 6.5,
 		"contractFee": 20,
 		"monthlyPayment": 0,
 		"periodMax": "120 kuud",
 		"defaultSum": 5000,
-		"defaultPeriod": "60"
+		"defaultPeriod": 60
 	},
 	{
 		"id": "ev-charging",
 		"creditMin": 300,
 		"creditMax": 25000,
-		"interest": "5,90%",
+		"interest": 5.9,
 		"contractFee": 50,
 		"monthlyPayment": 2,
 		"periodMax": "120 kuud",
 		"defaultSum": 1000,
-		"defaultPeriod": "48"
+		"defaultPeriod": 48
 	}
 ]
