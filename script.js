@@ -32,6 +32,7 @@ const projectCost = document.querySelector(".project-cost-sum");
 const pricePerMonth = document.querySelector(".price-per-month");
 const inputPeriod = document.querySelector("#period");
 const selectionOver = document.querySelectorAll("#off");
+const deposit = document.querySelector("#deposit");
 const defaultValue = inputSlider.value;
 
 btn.onclick = () => {
