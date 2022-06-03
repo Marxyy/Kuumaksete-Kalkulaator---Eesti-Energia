@@ -30,20 +30,8 @@ const managementFee = document.querySelector(".management-fee-sum");
 const period = document.querySelector(".period-sum");
 const projectCost = document.querySelector(".project-cost-sum");
 const pricePerMonth = document.querySelector(".price-per-month");
-// const inputPeriod = document.querySelectorAll("option");
+const inputPeriod = document.querySelector("#period");
 const defaultValue = inputSlider.value;
-
-inputSlider.oninput = () => {
-	let value = inputSlider.value;
-	slideValue.textContent = value + " €";
-	// slideValue.style.left = value / 260 + "%";
-	const min = range.min;
-	const max = range.max;
-	const rangeValue = range.value;
-
-	inputSlider.style.backgroundSize =
-		((rangeValue - min) * 100) / (max - min) + "% 100%";
-};
 
 btn.onclick = () => {
 	container.classList.add("is-blurred");
@@ -66,6 +54,13 @@ solutions.forEach((solution) => {
 			managementFee.textContent = `${pvData.monthlyPayment} €`;
 			period.textContent = `${pvData.defaultPeriod} kuud`;
 			projectCost.textContent = `${pvData.defaultSum} €`;
+			pricePerMonth.textContent = ` ${
+				Math.round(
+					(range.value / pvData.defaultPeriod +
+						(range.value * (pvData.interest * 0.01)) / pvData.defaultPeriod) *
+						100
+				) / 100
+			} €`;
 		} else if (solution.value === "heatpump") {
 			userSum.textContent = `${heatpumpData.defaultSum} €`;
 			range.value = heatpumpData.defaultSum;
@@ -75,6 +70,14 @@ solutions.forEach((solution) => {
 			managementFee.textContent = `${heatpumpData.monthlyPayment} €`;
 			period.textContent = `${heatpumpData.defaultPeriod} kuud`;
 			projectCost.textContent = `${heatpumpData.defaultSum} €`;
+			pricePerMonth.textContent = ` ${
+				Math.round(
+					(range.value / heatpumpData.defaultPeriod +
+						(range.value * (heatpumpData.interest * 0.01)) /
+							heatpumpData.defaultPeriod) *
+						100
+				) / 100
+			} €`;
 		} else if (solution.value === "electric-work") {
 			userSum.textContent = `${electricWorkData.defaultSum} €`;
 			range.value = electricWorkData.defaultSum;
@@ -84,6 +87,14 @@ solutions.forEach((solution) => {
 			managementFee.textContent = `${electricWorkData.monthlyPayment} €`;
 			period.textContent = `${electricWorkData.defaultPeriod} kuud`;
 			projectCost.textContent = `${electricWorkData.defaultSum} €`;
+			pricePerMonth.textContent = ` ${
+				Math.round(
+					(range.value / electricWorkData.defaultPeriod +
+						(range.value * (electricWorkData.interest * 0.01)) /
+							electricWorkData.defaultPeriod) *
+						100
+				) / 100
+			} €`;
 		} else if (solution.value === "off-grid") {
 			userSum.textContent = `${offGridData.defaultSum} €`;
 			range.value = offGridData.defaultSum;
@@ -93,6 +104,14 @@ solutions.forEach((solution) => {
 			managementFee.textContent = `${offGridData.monthlyPayment} €`;
 			period.textContent = `${offGridData.defaultPeriod} kuud`;
 			projectCost.textContent = `${offGridData.defaultSum} €`;
+			pricePerMonth.textContent = ` ${
+				Math.round(
+					(range.value / offGridData.defaultPeriod +
+						(range.value * (offGridData.interest * 0.01)) /
+							offGridData.defaultPeriod) *
+						100
+				) / 100
+			} €`;
 		} else if (solution.value === "ev-charging") {
 			userSum.textContent = `${evChargingData.defaultSum} €`;
 			range.value = evChargingData.defaultSum;
@@ -102,6 +121,47 @@ solutions.forEach((solution) => {
 			managementFee.textContent = `${evChargingData.monthlyPayment} €`;
 			period.textContent = `${evChargingData.defaultPeriod} kuud`;
 			projectCost.textContent = `${evChargingData.defaultSum} €`;
+			pricePerMonth.textContent = ` ${
+				Math.round(
+					(range.value / evChargingData.defaultPeriod +
+						(range.value * (evChargingData.interest * 0.01)) /
+							evChargingData.defaultPeriod) *
+						100
+				) / 100
+			} €`;
 		}
 	});
 });
+
+inputPeriod.addEventListener("change", () => {
+	period.textContent = inputPeriod.options[inputPeriod.selectedIndex].text;
+	pricePerMonth.textContent = ` ${
+		Math.round(
+			(range.value / inputPeriod.options[inputPeriod.selectedIndex].value +
+				(range.value * (evChargingData.interest * 0.01)) /
+					inputPeriod.options[inputPeriod.selectedIndex].value) *
+				100
+		) / 100
+	} €`;
+});
+
+inputSlider.oninput = () => {
+	let value = inputSlider.value;
+	slideValue.textContent = value + " €";
+	// slideValue.style.left = value / 260 + "%";
+	const min = range.min;
+	const max = range.max;
+	const rangeValue = range.value;
+	projectCost.textContent = `${range.value} €`;
+	pricePerMonth.textContent = ` ${
+		Math.round(
+			(range.value / inputPeriod.options[inputPeriod.selectedIndex].value +
+				(range.value * (evChargingData.interest * 0.01)) /
+					inputPeriod.options[inputPeriod.selectedIndex].value) *
+				100
+		) / 100
+	} €`;
+
+	inputSlider.style.backgroundSize =
+		((rangeValue - min) * 100) / (max - min) + "% 100%";
+};
