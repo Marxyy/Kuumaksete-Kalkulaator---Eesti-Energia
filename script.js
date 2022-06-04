@@ -33,7 +33,7 @@ const pricePerMonth = document.querySelector(".price-per-month");
 const inputPeriod = document.querySelector("#period");
 const selectionOver = document.querySelectorAll("#off");
 const deposit = document.querySelector("#deposit");
-const defaultValue = inputSlider.value;
+// const defaultValue = inputSlider.value;
 
 btn.onclick = () => {
 	container.classList.add("is-blurred");
@@ -51,6 +51,9 @@ solutions.forEach((solution) => {
 			userSum.textContent = `${pvData.defaultSum} €`;
 			range.value = pvData.defaultSum;
 			inputSlider.style.backgroundSize = "20% 100%";
+			deposit.value = 0;
+			deposit.classList.remove("error");
+			btn.classList.remove("not-clickable");
 			interest.textContent = `${pvData.interest} %`;
 			contractSum.textContent = `${pvData.contractFee} €`;
 			managementFee.textContent = `${pvData.monthlyPayment} €`;
@@ -59,7 +62,7 @@ solutions.forEach((solution) => {
 			projectCost.textContent = `${pvData.defaultSum} €`;
 			pricePerMonth.textContent = ` ${
 				Math.round(
-					(range.value / pvData.defaultPeriod +
+					((range.value - deposit.value) / pvData.defaultPeriod +
 						(range.value * (pvData.interest * 0.01)) / pvData.defaultPeriod) *
 						100
 				) / 100
@@ -71,7 +74,50 @@ solutions.forEach((solution) => {
 				const min = range.min;
 				const max = range.max;
 				const rangeValue = range.value;
-				projectCost.textContent = `${range.value} €`;
+				// projectCost.textContent = `${range.value - deposit.value} €`;
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+					pricePerMonth.textContent = `0 €`;
+					deposit.classList.add("error");
+					btn.classList.add("not-clickable");
+				} else {
+					deposit.classList.remove("error");
+					btn.classList.remove("not-clickable");
+					projectCost.textContent = `${range.value - deposit.value} €`;
+					pricePerMonth.textContent = ` ${
+						Math.round(
+							((range.value - deposit.value) /
+								inputPeriod.options[inputPeriod.selectedIndex].value +
+								(range.value * (pvData.interest * 0.01)) /
+									inputPeriod.options[inputPeriod.selectedIndex].value) *
+								100
+						) / 100
+					} €`;
+				}
+				// pricePerMonth.textContent = ` ${
+				// 	Math.round(
+				// 		((range.value - deposit.value) /
+				// 			inputPeriod.options[inputPeriod.selectedIndex].value +
+				// 			(range.value * (pvData.interest * 0.01)) /
+				// 				inputPeriod.options[inputPeriod.selectedIndex].value) *
+				// 			100
+				// 	) / 100
+				// } €`;
+
+				inputSlider.style.backgroundSize =
+					((rangeValue - min) * 100) / (max - min) + "% 100%";
+			};
+
+			deposit.addEventListener("change", () => {
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+				} else {
+					projectCost.textContent = `${range.value - deposit.value} €`;
+				}
+			});
+			inputPeriod.addEventListener("change", () => {
+				period.textContent =
+					inputPeriod.options[inputPeriod.selectedIndex].text;
 				pricePerMonth.textContent = ` ${
 					Math.round(
 						(range.value /
@@ -81,14 +127,14 @@ solutions.forEach((solution) => {
 							100
 					) / 100
 				} €`;
-
-				inputSlider.style.backgroundSize =
-					((rangeValue - min) * 100) / (max - min) + "% 100%";
-			};
+			});
 		} else if (solution.value === "heatpump") {
 			userSum.textContent = `${heatpumpData.defaultSum} €`;
 			range.value = heatpumpData.defaultSum;
 			inputSlider.style.backgroundSize = "5% 100%";
+			deposit.value = 0;
+			deposit.classList.remove("error");
+			btn.classList.remove("not-clickable");
 			interest.textContent = `${heatpumpData.interest} %`;
 			contractSum.textContent = `${heatpumpData.contractFee} €`;
 			managementFee.textContent = `${heatpumpData.monthlyPayment} €`;
@@ -130,7 +176,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `30 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (heatpumpData.interest * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -142,7 +188,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `20 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (heatpumpData.interestTwo * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -154,7 +200,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `20 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (heatpumpData.interestThree * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -162,15 +208,57 @@ solutions.forEach((solution) => {
 						) / 100
 					} €`;
 				}
-				projectCost.textContent = `${range.value} €`;
+				// projectCost.textContent = `${range.value} €`;
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+					pricePerMonth.textContent = `0 €`;
+					deposit.classList.add("error");
+					btn.classList.add("not-clickable");
+				} else {
+					deposit.classList.remove("error");
+					btn.classList.remove("not-clickable");
+					projectCost.textContent = `${range.value - deposit.value} €`;
+					pricePerMonth.textContent = ` ${
+						Math.round(
+							((range.value - deposit.value) /
+								inputPeriod.options[inputPeriod.selectedIndex].value +
+								(range.value * (heatpumpData.interest * 0.01)) /
+									inputPeriod.options[inputPeriod.selectedIndex].value) *
+								100
+						) / 100
+					} €`;
+				}
 
 				inputSlider.style.backgroundSize =
 					((rangeValue - min) * 100) / (max - min) + "% 100%";
 			};
+			deposit.addEventListener("change", () => {
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+				} else {
+					projectCost.textContent = `${range.value - deposit.value} €`;
+				}
+			});
+			inputPeriod.addEventListener("change", () => {
+				period.textContent =
+					inputPeriod.options[inputPeriod.selectedIndex].text;
+				pricePerMonth.textContent = ` ${
+					Math.round(
+						(range.value /
+							inputPeriod.options[inputPeriod.selectedIndex].value +
+							(range.value * (heatpumpData.interest * 0.01)) /
+								inputPeriod.options[inputPeriod.selectedIndex].value) *
+							100
+					) / 100
+				} €`;
+			});
 		} else if (solution.value === "electric-work") {
 			userSum.textContent = `${electricWorkData.defaultSum} €`;
 			range.value = electricWorkData.defaultSum;
 			inputSlider.style.backgroundSize = "5% 100%";
+			deposit.value = 0;
+			deposit.classList.remove("error");
+			btn.classList.remove("not-clickable");
 			interest.textContent = `${electricWorkData.interest} %`;
 			contractSum.textContent = `${electricWorkData.contractFee} €`;
 			managementFee.textContent = `${electricWorkData.monthlyPayment} €`;
@@ -212,7 +300,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `30 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (electricWorkData.interestFour * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -225,7 +313,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `20 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (electricWorkData.interest * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -238,7 +326,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `20 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (electricWorkData.interestTwo * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -251,7 +339,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `20 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (electricWorkData.interestThree * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -259,14 +347,56 @@ solutions.forEach((solution) => {
 						) / 100
 					} €`;
 				}
-				projectCost.textContent = `${range.value} €`;
+				// projectCost.textContent = `${range.value} €`;
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+					pricePerMonth.textContent = `0 €`;
+					deposit.classList.add("error");
+					btn.classList.add("not-clickable");
+				} else {
+					deposit.classList.remove("error");
+					btn.classList.remove("not-clickable");
+					projectCost.textContent = `${range.value - deposit.value} €`;
+					pricePerMonth.textContent = ` ${
+						Math.round(
+							((range.value - deposit.value) /
+								inputPeriod.options[inputPeriod.selectedIndex].value +
+								(range.value * (electricWorkData.interest * 0.01)) /
+									inputPeriod.options[inputPeriod.selectedIndex].value) *
+								100
+						) / 100
+					} €`;
+				}
 				inputSlider.style.backgroundSize =
 					((rangeValue - min) * 100) / (max - min) + "% 100%";
 			};
+			deposit.addEventListener("change", () => {
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+				} else {
+					projectCost.textContent = `${range.value - deposit.value} €`;
+				}
+			});
+			inputPeriod.addEventListener("change", () => {
+				period.textContent =
+					inputPeriod.options[inputPeriod.selectedIndex].text;
+				pricePerMonth.textContent = ` ${
+					Math.round(
+						(range.value /
+							inputPeriod.options[inputPeriod.selectedIndex].value +
+							(range.value * (electricWorkData.interest * 0.01)) /
+								inputPeriod.options[inputPeriod.selectedIndex].value) *
+							100
+					) / 100
+				} €`;
+			});
 		} else if (solution.value === "off-grid") {
 			userSum.textContent = `${offGridData.defaultSum} €`;
 			range.value = offGridData.defaultSum;
 			inputSlider.style.backgroundSize = "20% 100%";
+			deposit.value = 0;
+			deposit.classList.remove("error");
+			btn.classList.remove("not-clickable");
 			interest.textContent = `${offGridData.interest} %`;
 			contractSum.textContent = `${offGridData.contractFee} €`;
 			managementFee.textContent = `${offGridData.monthlyPayment} €`;
@@ -305,7 +435,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `30 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (offGridData.interestTwo * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -318,7 +448,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `20 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (offGridData.interest * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -331,7 +461,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `20 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (offGridData.interestThree * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -339,14 +469,56 @@ solutions.forEach((solution) => {
 						) / 100
 					} €`;
 				}
-				projectCost.textContent = `${range.value} €`;
+				// projectCost.textContent = `${range.value} €`;
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+					pricePerMonth.textContent = `0 €`;
+					deposit.classList.add("error");
+					btn.classList.add("not-clickable");
+				} else {
+					deposit.classList.remove("error");
+					btn.classList.remove("not-clickable");
+					projectCost.textContent = `${range.value - deposit.value} €`;
+					pricePerMonth.textContent = ` ${
+						Math.round(
+							((range.value - deposit.value) /
+								inputPeriod.options[inputPeriod.selectedIndex].value +
+								(range.value * (offGridData.interest * 0.01)) /
+									inputPeriod.options[inputPeriod.selectedIndex].value) *
+								100
+						) / 100
+					} €`;
+				}
 				inputSlider.style.backgroundSize =
 					((rangeValue - min) * 100) / (max - min) + "% 100%";
 			};
+			deposit.addEventListener("change", () => {
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+				} else {
+					projectCost.textContent = `${range.value - deposit.value} €`;
+				}
+			});
+			inputPeriod.addEventListener("change", () => {
+				period.textContent =
+					inputPeriod.options[inputPeriod.selectedIndex].text;
+				pricePerMonth.textContent = ` ${
+					Math.round(
+						(range.value /
+							inputPeriod.options[inputPeriod.selectedIndex].value +
+							(range.value * (offGrid.interest * 0.01)) /
+								inputPeriod.options[inputPeriod.selectedIndex].value) *
+							100
+					) / 100
+				} €`;
+			});
 		} else if (solution.value === "ev-charging") {
 			userSum.textContent = `${evChargingData.defaultSum} €`;
 			range.value = evChargingData.defaultSum;
 			inputSlider.style.backgroundSize = "5% 100%";
+			deposit.value = 0;
+			deposit.classList.remove("error");
+			btn.classList.remove("not-clickable");
 			interest.textContent = `${evChargingData.interest} %`;
 			contractSum.textContent = `${evChargingData.contractFee} €`;
 			managementFee.textContent = `${evChargingData.monthlyPayment} €`;
@@ -364,7 +536,6 @@ solutions.forEach((solution) => {
 			inputSlider.oninput = () => {
 				let value = inputSlider.value;
 				slideValue.textContent = value + " €";
-				// slideValue.style.left = value / 260 + "%";
 				const min = range.min;
 				const max = range.max;
 				const rangeValue = range.value;
@@ -385,7 +556,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `50 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (evChargingData.interest * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -398,7 +569,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `40 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (evChargingData.interestTwo * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -411,7 +582,7 @@ solutions.forEach((solution) => {
 					contractSum.textContent = `30 €`;
 					pricePerMonth.textContent = ` ${
 						Math.round(
-							(range.value /
+							((range.value - deposit.value) /
 								inputPeriod.options[inputPeriod.selectedIndex].value +
 								(range.value * (evChargingData.interestThree * 0.01)) /
 									inputPeriod.options[inputPeriod.selectedIndex].value) *
@@ -419,10 +590,49 @@ solutions.forEach((solution) => {
 						) / 100
 					} €`;
 				}
-				projectCost.textContent = `${range.value} €`;
+				// projectCost.textContent = `${range.value} €`;
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+					pricePerMonth.textContent = `0 €`;
+					deposit.classList.add("error");
+					btn.classList.add("not-clickable");
+				} else {
+					deposit.classList.remove("error");
+					btn.classList.remove("not-clickable");
+					projectCost.textContent = `${range.value - deposit.value} €`;
+					pricePerMonth.textContent = ` ${
+						Math.round(
+							((range.value - deposit.value) /
+								inputPeriod.options[inputPeriod.selectedIndex].value +
+								(range.value * (evChargingData.interest * 0.01)) /
+									inputPeriod.options[inputPeriod.selectedIndex].value) *
+								100
+						) / 100
+					} €`;
+				}
 				inputSlider.style.backgroundSize =
 					((rangeValue - min) * 100) / (max - min) + "% 100%";
 			};
+			deposit.addEventListener("change", () => {
+				if (range.value - deposit.value <= 0) {
+					projectCost.textContent = `0 €`;
+				} else {
+					projectCost.textContent = `${range.value - deposit.value} €`;
+				}
+			});
+			inputPeriod.addEventListener("change", () => {
+				period.textContent =
+					inputPeriod.options[inputPeriod.selectedIndex].text;
+				pricePerMonth.textContent = ` ${
+					Math.round(
+						(range.value /
+							inputPeriod.options[inputPeriod.selectedIndex].value +
+							(range.value * (evChargingData.interest * 0.01)) /
+								inputPeriod.options[inputPeriod.selectedIndex].value) *
+							100
+					) / 100
+				} €`;
+			});
 		}
 	});
 });
@@ -432,30 +642,71 @@ inputPeriod.addEventListener("change", () => {
 	pricePerMonth.textContent = ` ${
 		Math.round(
 			(range.value / inputPeriod.options[inputPeriod.selectedIndex].value +
-				(range.value * (evChargingData.interest * 0.01)) /
+				(range.value * (pvData.interest * 0.01)) /
 					inputPeriod.options[inputPeriod.selectedIndex].value) *
 				100
 		) / 100
 	} €`;
 });
 
-// inputSlider.oninput = () => {
-// 	let value = inputSlider.value;
-// 	slideValue.textContent = value + " €";
-// 	// slideValue.style.left = value / 260 + "%";
-// 	const min = range.min;
-// 	const max = range.max;
-// 	const rangeValue = range.value;
-// 	projectCost.textContent = `${range.value} €`;
-// 	pricePerMonth.textContent = ` ${
-// 		Math.round(
-// 			(range.value / inputPeriod.options[inputPeriod.selectedIndex].value +
-// 				(range.value * (evChargingData.interest * 0.01)) /
-// 					inputPeriod.options[inputPeriod.selectedIndex].value) *
-// 				100
-// 		) / 100
-// 	} €`;
+inputSlider.oninput = () => {
+	let value = inputSlider.value;
+	slideValue.textContent = value + " €";
+	const min = range.min;
+	const max = range.max;
+	const rangeValue = range.value;
+	// projectCost.textContent = `${range.value - deposit.value} €`;
+	// pricePerMonth.textContent = ` ${
+	// 	Math.round(
+	// 		((range.value - deposit.value) /
+	// 			inputPeriod.options[inputPeriod.selectedIndex].value +
+	// 			(range.value * (pvData.interest * 0.01)) /
+	// 				inputPeriod.options[inputPeriod.selectedIndex].value) *
+	// 			100
+	// 	) / 100
+	// } €`;
+	if (range.value - deposit.value <= 0) {
+		projectCost.textContent = `0 €`;
+		pricePerMonth.textContent = `0 €`;
+		deposit.classList.add("error");
+		btn.classList.add("not-clickable");
+	} else {
+		deposit.classList.remove("error");
+		btn.classList.remove("not-clickable");
+		projectCost.textContent = `${range.value - deposit.value} €`;
+		pricePerMonth.textContent = ` ${
+			Math.round(
+				((range.value - deposit.value) /
+					inputPeriod.options[inputPeriod.selectedIndex].value +
+					(range.value * (pvData.interest * 0.01)) /
+						inputPeriod.options[inputPeriod.selectedIndex].value) *
+					100
+			) / 100
+		} €`;
+	}
 
-// 	inputSlider.style.backgroundSize =
-// 		((rangeValue - min) * 100) / (max - min) + "% 100%";
-// };
+	inputSlider.style.backgroundSize =
+		((rangeValue - min) * 100) / (max - min) + "% 100%";
+};
+
+deposit.addEventListener("change", () => {
+	if (range.value - deposit.value <= 0) {
+		projectCost.textContent = `0 €`;
+		pricePerMonth.textContent = `0 €`;
+		deposit.classList.add("error");
+		btn.classList.add("not-clickable");
+	} else {
+		deposit.classList.remove("error");
+		btn.classList.remove("not-clickable");
+		projectCost.textContent = `${range.value - deposit.value} €`;
+		pricePerMonth.textContent = ` ${
+			Math.round(
+				((range.value - deposit.value) /
+					inputPeriod.options[inputPeriod.selectedIndex].value +
+					(range.value * (pvData.interest * 0.01)) /
+						inputPeriod.options[inputPeriod.selectedIndex].value) *
+					100
+			) / 100
+		} €`;
+	}
+});
