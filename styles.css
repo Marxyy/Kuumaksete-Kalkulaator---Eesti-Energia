@@ -318,6 +318,16 @@ input[type="radio"]:checked + .solution-content::before {
 	z-index: 2;
 	cursor: pointer;
 }
+.prices input::-ms-thumb {
+	-webkit-appearance: none;
+	height: 23px;
+	width: 23px;
+	background-color: hsl(114, 55%, 35%);
+	border-radius: 50%;
+	border: none;
+	z-index: 2;
+	cursor: pointer;
+}
 
 .prices input::-moz-range-thumb:active {
 	background-color: hsl(114, 62%, 25%);
