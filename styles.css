@@ -186,6 +186,15 @@ a:visited {
 	color: red;
 }
 
+.btn {
+	padding: 0.75rem 2.5rem;
+	border-radius: 25px;
+	font-size: 1.1rem;
+	display: inline-block;
+	background-color: var(--main-green);
+	color: #fff;
+}
+
 .not-clickable {
 	pointer-events: none;
 	user-select: none;
@@ -406,15 +415,6 @@ input[type="radio"]:checked + .solution-content::before {
 	padding: 2rem 0;
 }
 
-.btn {
-	padding: 0.75rem 2.5rem;
-	border-radius: 25px;
-	font-size: 1.1rem;
-	display: inline-block;
-	background-color: var(--main-green);
-	color: #fff;
-}
-
 .submit-btn i {
 	margin-left: 5px;
 }
@@ -506,7 +506,7 @@ input[type="radio"]:checked + .solution-content::before {
 
 @media only screen and (min-width: 1200px) {
 	.container {
-		margin-top: 4rem;
+		margin-top: 3rem;
 		padding-inline: 5rem;
 	}
 
