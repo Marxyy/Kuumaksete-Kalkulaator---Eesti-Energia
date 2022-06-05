@@ -33,7 +33,6 @@ const pricePerMonth = document.querySelector(".price-per-month");
 const inputPeriod = document.querySelector("#period");
 const selectionOver = document.querySelectorAll("#off");
 const deposit = document.querySelector("#deposit");
-// const defaultValue = inputSlider.value;
 
 btn.onclick = () => {
 	container.classList.add("is-blurred");
@@ -70,11 +69,9 @@ solutions.forEach((solution) => {
 			inputSlider.oninput = () => {
 				let value = inputSlider.value;
 				slideValue.textContent = value + " €";
-				// slideValue.style.left = value / 260 + "%";
 				const min = range.min;
 				const max = range.max;
 				const rangeValue = range.value;
-				// projectCost.textContent = `${range.value - deposit.value} €`;
 				if (range.value - deposit.value <= 0) {
 					projectCost.textContent = `0 €`;
 					pricePerMonth.textContent = `0 €`;
@@ -94,15 +91,6 @@ solutions.forEach((solution) => {
 						) / 100
 					} €`;
 				}
-				// pricePerMonth.textContent = ` ${
-				// 	Math.round(
-				// 		((range.value - deposit.value) /
-				// 			inputPeriod.options[inputPeriod.selectedIndex].value +
-				// 			(range.value * (pvData.interest * 0.01)) /
-				// 				inputPeriod.options[inputPeriod.selectedIndex].value) *
-				// 			100
-				// 	) / 100
-				// } €`;
 
 				inputSlider.style.backgroundSize =
 					((rangeValue - min) * 100) / (max - min) + "% 100%";
@@ -155,7 +143,6 @@ solutions.forEach((solution) => {
 			inputSlider.oninput = () => {
 				let value = inputSlider.value;
 				slideValue.textContent = value + " €";
-				// slideValue.style.left = value / 260 + "%";
 				const min = range.min;
 				const max = range.max;
 				const rangeValue = range.value;
@@ -208,7 +195,7 @@ solutions.forEach((solution) => {
 						) / 100
 					} €`;
 				}
-				// projectCost.textContent = `${range.value} €`;
+
 				if (range.value - deposit.value <= 0) {
 					projectCost.textContent = `0 €`;
 					pricePerMonth.textContent = `0 €`;
@@ -279,7 +266,6 @@ solutions.forEach((solution) => {
 			inputSlider.oninput = () => {
 				let value = inputSlider.value;
 				slideValue.textContent = value + " €";
-				// slideValue.style.left = value / 260 + "%";
 				const min = range.min;
 				const max = range.max;
 				const rangeValue = range.value;
@@ -347,7 +333,7 @@ solutions.forEach((solution) => {
 						) / 100
 					} €`;
 				}
-				// projectCost.textContent = `${range.value} €`;
+
 				if (range.value - deposit.value <= 0) {
 					projectCost.textContent = `0 €`;
 					pricePerMonth.textContent = `0 €`;
@@ -414,7 +400,7 @@ solutions.forEach((solution) => {
 			inputSlider.oninput = () => {
 				let value = inputSlider.value;
 				slideValue.textContent = value + " €";
-				// slideValue.style.left = value / 260 + "%";
+
 				const min = range.min;
 				const max = range.max;
 				const rangeValue = range.value;
@@ -469,7 +455,7 @@ solutions.forEach((solution) => {
 						) / 100
 					} €`;
 				}
-				// projectCost.textContent = `${range.value} €`;
+
 				if (range.value - deposit.value <= 0) {
 					projectCost.textContent = `0 €`;
 					pricePerMonth.textContent = `0 €`;
@@ -590,7 +576,7 @@ solutions.forEach((solution) => {
 						) / 100
 					} €`;
 				}
-				// projectCost.textContent = `${range.value} €`;
+
 				if (range.value - deposit.value <= 0) {
 					projectCost.textContent = `0 €`;
 					pricePerMonth.textContent = `0 €`;
@@ -655,16 +641,6 @@ inputSlider.oninput = () => {
 	const min = range.min;
 	const max = range.max;
 	const rangeValue = range.value;
-	// projectCost.textContent = `${range.value - deposit.value} €`;
-	// pricePerMonth.textContent = ` ${
-	// 	Math.round(
-	// 		((range.value - deposit.value) /
-	// 			inputPeriod.options[inputPeriod.selectedIndex].value +
-	// 			(range.value * (pvData.interest * 0.01)) /
-	// 				inputPeriod.options[inputPeriod.selectedIndex].value) *
-	// 			100
-	// 	) / 100
-	// } €`;
 	if (range.value - deposit.value <= 0) {
 		projectCost.textContent = `0 €`;
 		pricePerMonth.textContent = `0 €`;
