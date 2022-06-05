@@ -64,6 +64,7 @@ textarea {
 select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
+	color: inherit;
 }
 
 input[type="number"] {
